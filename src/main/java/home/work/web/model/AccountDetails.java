@@ -1,7 +1,10 @@
 package home.work.web.model;
 
-import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
+import java.util.Objects;
+@JsonDeserialize(using = Transaction.class)
 public class AccountDetails {
 
   private String userId;
@@ -12,10 +15,15 @@ public class AccountDetails {
     this.balance = balance;
   }
 
+  public AccountDetails() {
+  }
+
+  @JsonProperty("userId")
   public String getUserId() {
     return userId;
   }
 
+  @JsonProperty("balance")
   public int getBalance() {
     return balance;
   }
